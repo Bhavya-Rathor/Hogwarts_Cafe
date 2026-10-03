@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table QR Standee | Hogwarts Cafe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            espresso: '#0f0b09',
+            crema: '#f4ede4',
+            caramel: '#c68b59',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .standee-card {
+        border: 2px solid #c68b59 !important;
+        box-shadow: none !important;
+        background: #0f0b09 !important;
+        color: #f4ede4 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="bg-stone-950 text-crema font-sans min-h-screen flex flex-col items-center justify-center p-4 sm:p-8">
+
+  <!-- Top Action Bar (hidden when printed) -->
+  <div class="no-print max-w-md w-full mb-6 flex items-center justify-between bg-stone-900 border border-stone-800 rounded-2xl p-4 shadow-xl">
+    <div>
+      <h1 class="text-sm font-bold text-white">Table QR Standee</h1>
+      <p class="text-xs text-stone-400">Print or save as PDF for table tent cards</p>
+    </div>
+    <div class="flex gap-2">
+      <a href="index.html" class="px-3.5 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-xs font-semibold text-stone-300 transition">
+        ← Website
+      </a>
+      <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-caramel hover:bg-amber-600 text-espresso text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-caramel/20 transition active:scale-95">
+        <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+        <span>Print Standee</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- STANDEE CARD (Standard 4x6" Luxury Tent Card) -->
+  <div class="standee-card bg-[#0f0b09] border-2 border-caramel/40 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl relative overflow-hidden space-y-6">
+
+    <!-- Decorative Corner Accents -->
+    <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-caramel/50"></div>
+    <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-caramel/50"></div>
+    <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-caramel/50"></div>
+    <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-caramel/50"></div>
+
+    <!-- Header / Brand -->
+    <div class="space-y-1">
+      <div class="w-12 h-12 mx-auto rounded-2xl bg-gradient-to-tr from-amber-700 to-caramel flex items-center justify-center shadow-lg shadow-caramel/20 mb-3">
+        <i data-lucide="coffee" class="w-6 h-6 text-crema"></i>
+      </div>
+      <h2 class="font-serif text-2xl font-bold tracking-tight text-white">Hogwarts Cafe</h2>
+      <p class="text-[11px] uppercase tracking-widest text-caramel font-semibold">Artisan Bakery & Specialty Coffee</p>
+    </div>
+
+    <!-- QR Code Box -->
+    <div class="bg-white p-4 rounded-2xl inline-block shadow-2xl mx-auto border-4 border-caramel/30">
+      <img 
+        id="qrImage"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://bhavya-rathor.github.io/Hogwarts_Cafe/&color=0f0b09" 
+        alt="Scan for Menu" 
+        class="w-48 h-48 mx-auto"
+      >
+    </div>
+
+    <!-- Call to Action -->
+    <div class="space-y-1.5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-caramel/15 text-caramel text-[11px] font-bold uppercase tracking-wider">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+        <span>Scan with your phone camera</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-white">Browse Menu & Order Ahead</h3>
+      <p class="text-xs text-stone-400">Order directly from your table via WhatsApp</p>
+    </div>
+
+    <!-- Table & Free Wi-Fi Info -->
+    <div class="grid grid-cols-2 gap-3 pt-3 border-t border-stone-800 text-xs">
+      <div class="bg-stone-900/90 rounded-xl p-2.5 border border-stone-800">
+        <div class="text-[10px] text-stone-400 uppercase font-semibold">Table</div>
+        <div class="text-base font-serif font-bold text-caramel"># <span id="tableNum">____</span></div>
+      </div>
+      <div class="bg-stone-900/90 rounded-xl p-2.5 border border-stone-800">
+        <div class="text-[10px] text-stone-400 uppercase font-semibold">Free Wi-Fi</div>
+        <div class="text-[11px] font-semibold text-white">Hogwarts-Guest</div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <p class="text-[10px] text-stone-500 pt-1">Freshly roasted weekly • Hand-laminated pastries</p>
+  </div>
+
+  <!-- Customization helper (hidden when printed) -->
+  <div class="no-print max-w-md w-full mt-6 bg-stone-900/60 border border-stone-800/80 rounded-2xl p-4 text-xs text-stone-400 space-y-3">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-white">Quick QR Customizer:</span>
+      <span class="text-[10px] text-caramel">Change URL or Table #</span>
+    </div>
+    <div class="grid grid-cols-2 gap-2">
+      <input 
+        type="text" 
+        id="customUrl" 
+        placeholder="Website URL" 
+        value="https://bhavya-rathor.github.io/Hogwarts_Cafe/"
+        class="bg-stone-950 border border-stone-800 rounded-lg px-2.5 py-1.5 text-white text-[11px] focus:outline-none focus:border-caramel"
+        oninput="updateQr()"
+      >
+      <input 
+        type="text" 
+        id="customTable" 
+        placeholder="Table # (e.g. 05)" 
+        class="bg-stone-950 border border-stone-800 rounded-lg px-2.5 py-1.5 text-white text-[11px] focus:outline-none focus:border-caramel"
+        oninput="updateTable()"
+      >
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function updateQr() {
+      const url = document.getElementById('customUrl').value.trim() || window.location.origin;
+      document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(url)}&color=0f0b09`;
+    }
+
+    function updateTable() {
+      const num = document.getElementById('customTable').value.trim() || '____';
+      document.getElementById('tableNum').innerText = num;
+    }
+  </script>
+</body>
+</html>

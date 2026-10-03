@@ -142,7 +142,14 @@
       </nav>
 
       <!-- Action Button + Hamburger -->
+      <!-- Action Button + Hamburger -->
       <div class="flex items-center space-x-3">
+        <!-- Live Open/Closed Status in Navbar (Desktop) -->
+        <div id="navLiveBadge" class="hidden lg:inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/70 text-emerald-400 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="navLiveText">Open Now</span>
+        </div>
+
         <!-- Cart / Order Button in Navbar -->
         <button 
           onclick="openCart()" 
@@ -171,6 +178,11 @@
     <!-- Mobile Dropdown Menu -->
     <div id="mobileMenu" class="hidden md:hidden px-6 pb-5 pt-2 border-t border-stone-800/60">
       <nav class="flex flex-col space-y-4 text-sm font-medium text-stone-300 mt-3">
+        <!-- Mobile Live Status -->
+        <div id="mobileLiveBadge" class="inline-flex items-center space-x-2 text-xs text-emerald-400 py-1 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="mobileLiveText">🟢 Open Now • Until 10:00 PM</span>
+        </div>
         <a href="#menu" onclick="toggleMobileMenu()" class="hover:text-caramel transition">☕ Menu</a>
         <a href="#story" onclick="toggleMobileMenu()" class="hover:text-caramel transition">📖 Our Story</a>
         <a href="#reviews" onclick="toggleMobileMenu()" class="hover:text-caramel transition">⭐ Reviews</a>
@@ -197,9 +209,17 @@
       <!-- Left Content (7 Cols) -->
       <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
         
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-stone-900/80 border border-caramel/30 text-caramel text-xs font-semibold">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-caramel"></i>
-          <span>Voted City's Best Specialty Bakery 2026</span>
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-stone-900/80 border border-caramel/30 text-caramel text-xs font-semibold">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-caramel"></i>
+            <span>Voted City's Best Specialty Bakery 2026</span>
+          </div>
+
+          <!-- Hero Live Status Badge -->
+          <div id="heroLiveBadge" class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="heroLiveText">🟢 Open Now • Until 10:00 PM</span>
+          </div>
         </div>
 
         <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-[1.15]">
@@ -349,12 +369,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Signature Iced Spanish Latte</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$5.50</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹220</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Double shot espresso pulled over sweet condensed milk, organic oat milk, and a dusting of Ceylon cinnamon.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">Single-origin espresso</span>
-            <button onclick="addToCart('Signature Iced Spanish Latte ($5.50)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Signature Iced Spanish Latte', 220)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -371,12 +391,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Twice-Baked Almond Croissant</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$4.75</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹180</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Buttery laminated croissant filled with rich almond frangipane, topped with toasted sliced almonds and powdered sugar.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">French Normandy Butter</span>
-            <button onclick="addToCart('Twice-Baked Almond Croissant ($4.75)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Twice-Baked Almond Croissant', 180)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -393,12 +413,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Avocado & Poached Egg Tartine</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$11.50</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹320</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Thick slice of toasted rustic sourdough, smashed Hass avocado, poached organic farm egg, pomegranate seeds, chili flakes.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">Organic 36-hr sourdough</span>
-            <button onclick="addToCart('Avocado & Poached Egg Tartine ($11.50)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Avocado & Poached Egg Tartine', 320)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -414,12 +434,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Geisha Pour-Over Chemex</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$6.50</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹240</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Exquisite jasmine floral aroma, vibrant bergamot notes, and a clean tea-like finish brewed freshly to order.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">Panama Micro-lot</span>
-            <button onclick="addToCart('Geisha Pour-Over Chemex ($6.50)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Geisha Pour-Over Chemex', 240)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -435,12 +455,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Dark Chocolate Pain Au Chocolat</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$4.50</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹190</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Crisp, golden layers enclosing two batons of melted 70% Valrhona dark chocolate.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">Valrhona 70% Chocolate</span>
-            <button onclick="addToCart('Dark Chocolate Pain Au Chocolat ($4.50)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Dark Chocolate Pain Au Chocolat', 190)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -456,12 +476,12 @@
         <div class="p-5 space-y-2">
           <div class="flex items-center justify-between">
             <h4 class="font-serif text-lg font-bold text-white">Cast Iron Shakshuka</h4>
-            <span class="font-serif text-lg font-bold text-caramel">$13.00</span>
+            <span class="font-serif text-lg font-bold text-caramel">₹340</span>
           </div>
           <p class="text-xs text-stone-400 line-clamp-2">Simmered spiced tomato and roasted bell pepper sauce, two baked eggs, creamy Greek feta, and fresh warm sourdough.</p>
           <div class="pt-3 flex justify-between items-center">
             <span class="text-[11px] text-stone-500 font-medium">Served sizzling hot</span>
-            <button onclick="addToCart('Cast Iron Shakshuka ($13.00)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+            <button onclick="addToCart('Cast Iron Shakshuka', 340)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
               <span>+ Add to Order</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </button>
@@ -483,7 +503,7 @@
     <p class="text-xs text-stone-400 line-clamp-2">Exquisite water bottle.</p>
     <div class="pt-3 flex justify-between items-center">
       <span class="text-[11px] text-stone-500 font-medium">Water</span>
-      <button onclick="addToCart('Water Bottle (₹250)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+      <button onclick="addToCart('Water Bottle', 250)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
         <span>+ Add to Order</span>
         <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
       </button>
@@ -505,7 +525,7 @@
     <p class="text-xs text-stone-400 line-clamp-2">An exquisite jar of Pumpkin Seeds .</p>
     <div class="pt-3 flex justify-between items-center">
       <span class="text-[11px] text-stone-500 font-medium">Pumpkin Seeds</span>
-      <button onclick="addToCart('Jar of Pumpkin Seeds (₹200)')" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
+      <button onclick="addToCart('Jar of Pumpkin Seeds', 200)" class="text-xs text-caramel hover:text-white font-semibold flex items-center gap-1 transition">
         <span>+ Add to Order</span>
         <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
       </button>
@@ -661,6 +681,28 @@
 
       </div>
 
+      <!-- Google Review Booster Banner -->
+      <div class="mt-12 glass-card rounded-2xl p-6 sm:p-8 border border-caramel/30 bg-gradient-to-r from-stone-900 via-stone-900/90 to-amber-950/40 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-caramel/15 text-caramel text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>Google Review Booster</span>
+          </div>
+          <h3 class="font-serif text-2xl font-bold text-white">Loved your visit to Hogwarts Cafe?</h3>
+          <p class="text-xs text-stone-300 max-w-xl">
+            Drop us a quick 5-star rating on Google Maps! Show your review to the barista counter and enjoy a <span class="text-caramel font-semibold">complimentary mini-cookie or 10% off</span> on your next brew.
+          </p>
+        </div>
+        <a 
+          href="https://search.google.com/local/writereview?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4" 
+          target="_blank"
+          class="shrink-0 px-6 py-3.5 rounded-full bg-caramel hover:bg-amber-600 text-espresso font-bold text-xs tracking-wider uppercase transition shadow-xl shadow-caramel/25 flex items-center space-x-2 active:scale-95"
+        >
+          <i data-lucide="star" class="w-4 h-4 fill-espresso"></i>
+          <span>Write a 5-Star Review</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -737,7 +779,11 @@
         <span class="text-white font-serif font-bold">Hogwart Cafe</span>
         <span>© 2026. All rights reserved.</span>
       </div>
-      <div class="flex space-x-6">
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="qr.html" class="text-caramel hover:text-white transition flex items-center gap-1 font-semibold">
+          <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
+          <span>Table QR Standee</span>
+        </a>
         <a href="#" class="hover:text-caramel transition">Instagram</a>
         <a href="#" class="hover:text-caramel transition">Facebook</a>
         <a href="#" class="hover:text-caramel transition">Google Maps</a>
@@ -770,21 +816,48 @@
         </div>
       </div>
 
-      <!-- Customer Name + Checkout -->
-      <div class="px-6 py-5 border-t border-stone-800 space-y-4 bg-stone-950/80">
+      <!-- Customer Name + Bill Summary + Checkout -->
+      <div class="px-6 py-4 border-t border-stone-800 space-y-3 bg-stone-950/90">
+        <!-- Live Bill Calculation -->
+        <div id="cartBillBox" class="bg-stone-900/90 rounded-xl p-3.5 border border-stone-800 space-y-1.5 text-xs">
+          <div class="flex justify-between text-stone-400">
+            <span>Items Subtotal:</span>
+            <span id="billSubtotal" class="font-semibold text-white">₹0</span>
+          </div>
+          <div class="flex justify-between text-stone-400">
+            <span>GST (5%):</span>
+            <span id="billGst" class="font-semibold text-white">₹0</span>
+          </div>
+          <div class="border-t border-stone-800 pt-1.5 flex justify-between text-sm font-bold">
+            <span class="text-caramel">Estimated Total:</span>
+            <span id="billTotal" class="text-caramel">₹0</span>
+          </div>
+        </div>
+
         <div>
-          <label class="text-xs font-semibold text-stone-300 block mb-1.5">👤 Your Name <span class="text-red-400">*</span></label>
+          <label class="text-xs font-semibold text-stone-300 block mb-1">👤 Your Name <span class="text-red-400">*</span></label>
           <input
             type="text"
             id="customerName"
             placeholder="e.g. Rahul Sharma"
-            class="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-caramel placeholder-stone-600"
+            class="w-full bg-stone-900 border border-stone-700 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-caramel placeholder-stone-600"
           >
-          <p id="nameError" class="text-red-400 text-xs mt-1 hidden">⚠️ Please enter your name to place the order</p>
+          <p id="nameError" class="text-red-400 text-[11px] mt-1 hidden">⚠️ Please enter your name</p>
         </div>
+
+        <div>
+          <label class="text-xs font-semibold text-stone-300 block mb-1">🪑 Table # or Order Type (Optional)</label>
+          <input
+            type="text"
+            id="orderTableNotes"
+            placeholder="e.g. Table 4 / Dine-in / Takeaway"
+            class="w-full bg-stone-900 border border-stone-700 rounded-xl px-3.5 py-2 text-white text-xs focus:outline-none focus:border-caramel placeholder-stone-600"
+          >
+        </div>
+
         <button
           onclick="placeOrder()"
-          class="w-full py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30 transition active:scale-95"
+          class="w-full py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30 transition active:scale-95"
         >
           <i data-lucide="message-circle" class="w-4 h-4 fill-white"></i>
           <span>Send Order on WhatsApp</span>
@@ -949,16 +1022,52 @@
       menu.classList.toggle('hidden');
     }
 
+    // ==================== LIVE OPEN/CLOSED STATUS CLOCK ====================
+    function updateLiveCafeStatus() {
+      const now = new Date();
+      const hour = now.getHours(); // 0 to 23
+      const isOpen = hour >= 8 && hour < 22; // 8:00 AM to 10:00 PM
+
+      const heroBadge = document.getElementById('heroLiveBadge');
+      const heroText = document.getElementById('heroLiveText');
+      const navBadge = document.getElementById('navLiveBadge');
+      const navText = document.getElementById('navLiveText');
+      const mobileBadge = document.getElementById('mobileLiveBadge');
+      const mobileText = document.getElementById('mobileLiveText');
+
+      if (isOpen) {
+        if (heroText) heroText.innerText = "🟢 Open Now • Closes at 10:00 PM";
+        if (navText) navText.innerText = "Open Now";
+        if (mobileText) mobileText.innerText = "🟢 Open Now • Until 10:00 PM";
+      } else {
+        if (heroBadge) {
+          heroBadge.className = "inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-950/80 text-rose-400 border border-rose-500/30";
+        }
+        if (heroText) heroText.innerText = "🔴 Currently Closed • Opens 8:00 AM";
+        if (navBadge) {
+          navBadge.className = "hidden lg:inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-rose-950/70 text-rose-400 border border-rose-500/30";
+        }
+        if (navText) navText.innerText = "Closed Now";
+        if (mobileBadge) {
+          mobileBadge.className = "inline-flex items-center space-x-2 text-xs text-rose-400 py-1 font-semibold";
+        }
+        if (mobileText) mobileText.innerText = "🔴 Currently Closed • Opens 8:00 AM";
+      }
+    }
+    updateLiveCafeStatus();
+    setInterval(updateLiveCafeStatus, 60000); // Check every minute
+
     // ==================== ORDER LIST / CART SYSTEM ====================
     let cart = [];
 
-    // Add item to order
-    function addToCart(itemName) {
+    // Add item to order with price tracking
+    function addToCart(itemName, price) {
+      const itemPrice = Number(price) || 0;
       const existing = cart.find(i => i.name === itemName);
       if (existing) {
         existing.qty += 1;
       } else {
-        cart.push({ name: itemName, qty: 1 });
+        cart.push({ name: itemName, price: itemPrice, qty: 1 });
       }
 
       updateCartUI();
@@ -1004,9 +1113,20 @@
       document.getElementById('cartPanel').classList.add('hidden');
     }
 
-    // Refresh Cart UI & Badge
+    // Refresh Cart UI & Live Bill Calculation
     function updateCartUI() {
       const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const gst = Math.round(subtotal * 0.05); // 5% GST
+      const grandTotal = subtotal + gst;
+
+      // Update bill boxes
+      const subtotalEl = document.getElementById('billSubtotal');
+      const gstEl = document.getElementById('billGst');
+      const totalEl = document.getElementById('billTotal');
+      if (subtotalEl) subtotalEl.innerText = `₹${subtotal}`;
+      if (gstEl) gstEl.innerText = `₹${gst}`;
+      if (totalEl) totalEl.innerText = `₹${grandTotal}`;
 
       // Floating button badge
       const badge = document.getElementById('cartBadge');
@@ -1056,10 +1176,12 @@
 
       let html = '';
       cart.forEach((item, idx) => {
+        const itemLineTotal = item.price * item.qty;
         html += `
           <div class="cart-item-row py-3 flex items-center justify-between gap-3">
             <div class="flex-1 min-w-0">
               <div class="text-white text-xs font-semibold truncate">${item.name}</div>
+              <div class="text-[11px] text-stone-400">₹${item.price} each • <span class="text-caramel font-semibold">₹${itemLineTotal}</span></div>
             </div>
             <div class="flex items-center gap-2">
               <div class="flex items-center border border-stone-700 rounded-lg overflow-hidden bg-stone-900">
@@ -1075,7 +1197,7 @@
       container.innerHTML = html;
     }
 
-    // Place Combined Order on WhatsApp with Unique Order ID
+    // Place Combined Order on WhatsApp with Unique Order ID & Bill Calculation
     function placeOrder() {
       if (cart.length === 0) {
         alert("Your order list is empty! Please add some items from the menu first.");
@@ -1085,6 +1207,8 @@
       const nameInput = document.getElementById('customerName');
       const nameVal = nameInput ? nameInput.value.trim() : '';
       const nameError = document.getElementById('nameError');
+      const tableInput = document.getElementById('orderTableNotes');
+      const tableVal = tableInput ? tableInput.value.trim() : 'Dine-in / Direct Counter';
 
       if (!nameVal) {
         if (nameError) nameError.classList.remove('hidden');
@@ -1096,6 +1220,10 @@
       // Generate Unique Order ID (e.g., #HW-4821)
       const orderId = 'HW-' + Math.floor(1000 + Math.random() * 9000);
       const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
+      const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      const gst = Math.round(subtotal * 0.05);
+      const grandTotal = subtotal + gst;
+
       const now = new Date();
       const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       const dateStr = now.toLocaleDateString([], { day: 'numeric', month: 'short' });
@@ -1103,15 +1231,19 @@
       let message = `🛒 *NEW ORDER #${orderId}*\n`;
       message += `━━━━━━━━━━━━━━━━━━━━━\n`;
       message += `👤 *Customer:* ${nameVal}\n`;
+      message += `🪑 *Order Info:* ${tableVal}\n`;
       message += `📅 *Placed on:* ${dateStr}, ${timeStr}\n`;
       message += `━━━━━━━━━━━━━━━━━━━━━\n`;
       message += `📋 *Items Ordered:*\n`;
       cart.forEach(item => {
-        message += `  • ${item.qty}x ${item.name}\n`;
+        message += `  • ${item.qty}x ${item.name} (@ ₹${item.price}) = ₹${item.price * item.qty}\n`;
       });
       message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-      message += `🔢 *Total Quantity:* ${totalCount} item(s)\n\n`;
-      message += `_Please confirm my order #${orderId} and let me know the preparation time. Thank you!_`;
+      message += `Subtotal: ₹${subtotal}\n`;
+      message += `GST (5%): ₹${gst}\n`;
+      message += `💰 *Grand Total: ₹${grandTotal}*\n`;
+      message += `🔢 *Total Items:* ${totalCount} item(s)\n\n`;
+      message += `_Please confirm Order #${orderId} and let me know the preparation time. Thank you!_`;
 
       const phoneNumber = "918480559748";
       const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -1122,6 +1254,7 @@
       updateCartUI();
       closeCart();
       if (nameInput) nameInput.value = '';
+      if (tableInput) tableInput.value = '';
     }
 
   </script>
